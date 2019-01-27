@@ -45,7 +45,6 @@ export function getKeywords(picObject) {
   try {
     return picObject.responses[0].textAnnotations[0].description;
   } catch (error) {
-    console.error(error);
-    return error;
+    return "";
   }
 }

@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, AsyncStorage, CameraRoll } from 'react-native';
+import { View, Text, StyleSheet, Button, AsyncStorage, CameraRoll, ActivityIndicator } from 'react-native';
 import BottomDrawer from '../components/BottomDrawer';
 import Container from '../components/Container';
 import { vw, vh } from 'react-native-expo-viewport-units';
 import { Spacing } from '../styles/theme';
 import { Camera, Permissions, FileSystem } from 'expo';
 import Buttons from '../components/Buttons';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { getTextFromImage } from '../lib/uploader';
 import { saveToCameraRoll } from 'react-native/Libraries/CameraRoll/CameraRoll';
 import { addNewPicture } from '../lib/session';
@@ -17,6 +18,15 @@ const TAB_BAR_HEIGHT = 49;
 const HEADER_HEIGHT = 60;
 const DESIRED_RATIO = "16:9";
 
+const FirstRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#ff4081' }]} />
+);
+const SecondRoute = () => (
+  <View style={[styles.scene, { backgroundColor: '#673ab7' }]} />
+);
+
+
+
 export default class App extends React.Component {
   static navigationOptions = {
     title: 'Home',
@@ -26,6 +36,12 @@ export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
+    disableTakePic: false,
+    index: 0,
+    routes: [
+      { key: 'first', title: 'First' },
+      { key: 'second', title: 'Second' },
+    ]
   };
 
   constructor(props) {
@@ -41,15 +57,20 @@ export default class App extends React.Component {
   }
 
   async _onPressButton() {
-    if(this.camera) {
+    if(this.camera && !this.state.disableTakePic) {
+      this.setState({disableTakePic: true});
       let photo = await this.camera.takePictureAsync({base64: true});
+      this.camera.pausePreview();
       let savedPhoto = await saveToCameraRoll(photo.uri);
       let imageText = await getTextFromImage(photo.base64);
-      addNewPicture({
-        id: ID(),
-        path: savedPhoto,
-        keywords: imageText
-      })
+      
+      // addNewPicture({
+      //   id: ID(),
+      //   path: savedPhoto,
+      //   keywords: imageText
+      // })
+      this.setState({disableTakePic: false});
+      this.camera.resumePreview();
     } else {
       console.warn("no camera ref rip")
     }
@@ -61,7 +82,7 @@ export default class App extends React.Component {
     return (
       <View>
         {this.state.hasCameraPermission ? (
-          <Camera ref={ref => {this.camera = ref;}} style={{ width: vw(100), height: vh(100) }} type={this.state.type} ratio={DESIRED_RATIO}>
+          <Camera ref={ref => {this.camera = ref;}} style={{ width: vw(100), height: vh(100), opacity: this.state.disableTakePic ? 0.5 : 1 }} type={this.state.type} ratio={DESIRED_RATIO}>
           </Camera>
         ) : null}
         <BottomDrawer topPosOffset={125} endTopPos={vh(10)}
@@ -76,15 +97,21 @@ export default class App extends React.Component {
                       ? Camera.Constants.Type.front
                       : Camera.Constants.Type.back,
                   });
-                }}>Testing</Buttons>
+                }} customMiddleIcon={this.state.disableTakePic ? <ActivityIndicator size="small" color="#2ea99c" /> : null}>Testing</Buttons>
             </Container>
           )}
           cardStyle={{ borderTopLeftRadius: Spacing.default, borderTopRightRadius: Spacing.default }}
         >
           <View style={{ height: vh(75) }}>
-            <Container>
-              <Text>Double Oh!!!!</Text>
-            </Container>
+            <TabView
+              navigationState={this.state}
+              renderScene={SceneMap({
+                first: FirstRoute,
+                second: SecondRoute,
+              })}
+              onIndexChange={index => this.setState({ index })}
+              initialLayout={{ width: vw(100) }}
+            />
           </View>
         </BottomDrawer>
       </View>

@@ -10,7 +10,11 @@ export default Buttons = (props) => {
                 <Ionicons name="md-reverse-camera" size={32} color="#2ea99c" />
             </TouchableOpacity>
             <TouchableOpacity onPress={props.onShutter} style={{ flex: 1, justifyContent: 'center', flexDirection: 'row' }}>
-                <Ionicons name="md-camera" size={32} color="#113b44" />
+                <View style={{width: 64, height: 64, backgroundColor: "#fff", shadowColor: "#333", shadowOffset: {width: 0,height: 8},shadowOpacity: 0.46,shadowRadius: 11.14,elevation: 15, borderRadius: 64, alignItems: 'center', justifyContent: 'center', textAlign: 'center'}}>
+                    {props.customMiddleIcon ? props.customMiddleIcon: (
+                        <Ionicons name="md-camera" size={32} color="#113b44" />
+                    )}
+                </View>
             </TouchableOpacity>
             <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}} onPress={() => {
                     console.log('You tapped the button!');

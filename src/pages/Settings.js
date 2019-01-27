@@ -5,6 +5,12 @@ export class Settings extends Component {
   static navigationOptions = {
     title: 'Settings'
   };
+
+  componentDidMount = () => {
+    
+  }
+  
+
   render() {
     return (
       <View>

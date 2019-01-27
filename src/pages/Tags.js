@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
 
-export class AddCalendar extends Component {
+export class Tags extends Component {
   static navigationOptions = {
-    title: 'Import your calendar'
+    title: 'Your Tags'
   };
   render() {
     return (
