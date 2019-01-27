@@ -19,7 +19,7 @@ import { ViewPagerAndroid } from 'react-native-gesture-handler';
 // this example assumes you're using a header and a tab bar
 const TAB_BAR_HEIGHT = 49;
 const HEADER_HEIGHT = 60;
-const DESIRED_RATIO = "16:9";
+const DESIRED_RATIO = "9:16";
 
 
 
