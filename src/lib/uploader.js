@@ -6,8 +6,7 @@ const image2base64 = require('image-to-base64');
  * @return {String} Returns the text representation of the supplied image
  */
 export function getTextFromImage(imagePath) {
-  var encryptedImage;
-  return image2base64("imagePath")
+  return image2base64(imagePath)
     .then((response) => {
       console.log(response);
       return response
