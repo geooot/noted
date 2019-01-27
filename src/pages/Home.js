@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, AsyncStorage, CameraRoll } from 'react-native';
 import BottomDrawer from '../components/BottomDrawer';
 import Container from '../components/Container';
 import { vw, vh } from 'react-native-expo-viewport-units';
 import { Spacing } from '../styles/theme';
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, FileSystem } from 'expo';
 import Buttons from '../components/Buttons';
+import { getTextFromImage } from '../lib/uploader';
+import { saveToCameraRoll } from 'react-native/Libraries/CameraRoll/CameraRoll';
+import { addNewPicture } from '../lib/session';
+import { ID } from '../lib/utils';
 
 
 // this example assumes you're using a header and a tab bar
@@ -32,17 +36,25 @@ export default class App extends React.Component {
   async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({ hasCameraPermission: status === 'granted' });
+    const {cameraRollStatus} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    this.setState({hasCameraRollPermission: cameraRollStatus === 'granted'});
   }
 
   async _onPressButton() {
     if(this.camera) {
-      let photo = await this.camera.takePictureAsync();
-      console.warn(photo)
+      let photo = await this.camera.takePictureAsync({base64: true});
+      let savedPhoto = await saveToCameraRoll(photo.uri);
+      let imageText = await getTextFromImage(photo.base64);
+      addNewPicture({
+        id: ID(),
+        path: savedPhoto,
+        keywords: imageText
+      })
     } else {
       console.warn("no camera ref rip")
     }
   }
-
+  
 
 
   render() {
