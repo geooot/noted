@@ -92,7 +92,7 @@ export default class App extends React.Component {
   async _onPressButton() {
     if(this.camera && !this.state.disableTakePic) {
       this.setState({disableTakePic: true});
-      let photo = await this.camera.takePictureAsync({base64: true});
+      let photo = await this.camera.takePictureAsync({base64: true, orientation:'portrait',forceUpOrientation: true});
       this.camera.pausePreview();
       let savedPhoto = await saveToCameraRoll(photo.uri);
       let imageText = await getTextFromImage(photo.base64);
@@ -158,7 +158,7 @@ export default class App extends React.Component {
         ): null}
 
         {this.state.hasCameraPermission ? (
-          <Camera ref={ref => {this.camera = ref;}} style={{ width: vw(100), height: vh(100), opacity: this.state.disableTakePic ? 0.5 : 1 }} type={this.state.type} ratio={DESIRED_RATIO}>
+          <Camera ref={ref => {this.camera = ref;}} style={{ width: vw(100), height: vh(100), opacity: this.state.disableTakePic ? 0.5 : 1}} type={this.state.type} ratio={DESIRED_RATIO}>
           </Camera>
         ) : null}
         <BottomDrawer topPosOffset={125} endTopPos={vh(10)}
