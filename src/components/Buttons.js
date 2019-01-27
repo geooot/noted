@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
-import { Surfaces, Colors } from '../styles/theme';
+import { Surfaces, Colors, Spacing } from '../styles/theme';
 import { Ionicons } from '@expo/vector-icons';
 
 export default Buttons = (props) => {
@@ -16,10 +16,8 @@ export default Buttons = (props) => {
                     )}
                 </View>
             </TouchableOpacity>
-            <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}} onPress={() => {
-                    console.log('You tapped the button!');
-                }}>
-                <View><Text style = {{color: '#2ea99c'}}>{props.title ? props.title: "Select Tag"}</Text></View>
+            <TouchableOpacity style={{ flex: 1, justifyContent: 'flex-end', flexDirection: 'row'}} onPress={props.onSelectPress}>
+                <View style={{backgroundColor: '#2ea99c', paddingLeft: Spacing.default, paddingRight: Spacing.default, paddingTop: Spacing.skinny, paddingBottom: Spacing.skinny, borderRadius: 8}}><Text style = {{color: '#fff', fontWeight: 'bold'}}>{props.title ? props.title: "Select Tag"}</Text></View>
             </TouchableOpacity>
         </View>
     )

@@ -7,11 +7,13 @@ import {
 } from 'react-navigation';
 import Home from './src/pages/Home';
 import Settings from './src/pages/Settings';
+import ImageDetail from './src/pages/ImageDetail';
 import { AntDesign } from '@expo/vector-icons';
 
 // Router for any home based sub pages
 const homeStackNavigation = createStackNavigator({
-  Root: Home
+  Root: Home,
+  ImageDetail: ImageDetail
 },
 {
   initialRouteName: 'Root'

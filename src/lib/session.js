@@ -8,7 +8,7 @@ import { AsyncStorage } from 'react-native'
 export const getAllTags = async () => {
     let routes = [];
     try {
-        let res = AsyncStorage.getItem('tags');
+        let res = await AsyncStorage.getItem('tags');
         tags = JSON.parse(res);
         if(tags) {
             return Promise.resolve(tags);
@@ -41,7 +41,7 @@ export const addNewTag = (tag) => {
 export const getAllPictures = async () => {
     let routes = [];
     try {
-        let res = AsyncStorage.getItem('pictures');
+        let res = await AsyncStorage.getItem('pictures');
         pictures = JSON.parse(res);
         if(tags) {
             return Promise.resolve(pictures);
