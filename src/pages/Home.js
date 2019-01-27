@@ -99,7 +99,7 @@ export default class App extends React.Component {
       let newPic = {
         id: ID(),
         path: savedPhoto,
-        keywords: imageText,
+        keywords: imageText.replace(/[\n\r\t]/g,),
         tagId: this.state.tags[this.state.selectedTag],
         dateCreated: new Date().getTime() 
       }
@@ -190,7 +190,11 @@ export default class App extends React.Component {
               itemPaddingHorizontal={1}
               renderItem = { this.renderItem }
             />
-          ) : null}
+          ) : (
+            <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+            <Text>Nothing to see here... Try changing the tab</Text>
+            </View>
+          )}
 
           </View>
         </BottomDrawer>
