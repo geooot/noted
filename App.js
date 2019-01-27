@@ -13,9 +13,9 @@ import { AntDesign } from '@expo/vector-icons';
 const homeStackNavigation = createStackNavigator({
   Root: Home
 },
-  {
-    initialRouteName: 'Root'
-  });
+{
+  initialRouteName: 'Root'
+});
 
 // Home stack drawer navigation options
 homeStackNavigation.navigationOptions = {
@@ -29,9 +29,9 @@ homeStackNavigation.navigationOptions = {
 const settingsStackNavigation = createStackNavigator({
   Root: Settings
 },
-  {
-    initialRouteName: 'Root'
-  });
+{
+  initialRouteName: 'Root'
+});
 
 // Settings stack drawer navigation options
 settingsStackNavigation.navigationOptions = {
@@ -46,10 +46,9 @@ const sideDrawerNavigator = createDrawerNavigator({
   Home: homeStackNavigation,
   Settings: settingsStackNavigation
 },
-  {
-    drawerType: "front",
-    drawerPosition: "left"
-  })
-
+{
+  drawerType: "front",
+  drawerPosition: "left"
+})
 
 export default createAppContainer(sideDrawerNavigator);
