@@ -1,6 +1,6 @@
 # noted (WIP title)
 
-![Load Screen](https://s3.amazonaws.com/sharkplayers/NotedLoad.JPG =200x200)
+<img src="https://s3.amazonaws.com/sharkplayers/NotedLoad.JPG?key=value" alt="drawing" width="250"/>
 
 # Clone and get up and running
 
