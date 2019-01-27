@@ -1,5 +1,7 @@
 # noted (WIP title)
 
+![Load Screen](https://s3.amazonaws.com/sharkplayers/NotedLoad.JPG)
+
 # Clone and get up and running
 
 What you need first
@@ -27,9 +29,6 @@ $ yarn start
 
 ## Purpose
 The primary purpose of noted is to help students with organizing their notes that are in the form of pictures. Often times, students choose to take pictures of their notes or lecture slides from class, with the intent of returning to them later for studying. However, given that these students tend to take many pictures, it can be difficult to find them at times. Noted allows users to add tags to their photos, such as what class or exam it's for, and then automatically have their study materials filtered and sorted for greater efficiency.
-
-![Load Screen](https://s3.amazonaws.com/sharkplayers/NotedLoad.PNG)
-![Home Screen](https://s3.amazonaws.com/sharkplayers/NotedHome.PNG)
 
 ## Built With
 
