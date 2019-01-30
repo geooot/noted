@@ -3,6 +3,8 @@
 
 Allows people to organize class notes pics for their classes. Made for [#tamuhack2019](https://tamuhack.com)
 
+Won "best use of Google Cloud Plaform" award at Tamuhack 2019!
+
 <img src="banner.png" class="header-img"/>
 
 ## Inspiration
@@ -84,6 +86,6 @@ $ yarn start
 
 ## License
 
-This project is licensed under the MIT license - see the [License.md](License.md) file for details
+This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details
 
 
