@@ -1,11 +1,11 @@
 # noted
-[[Source]](https://github.com/geooot/noted)  [[Website]](https://geooot.com/noted) [[Devpost]](https://devpost.com/software/noted-qnizx3)
+[[Source]](https://github.com/geooot/noted)  [[Website]](https://geooot.com/noted) [[Devpost]](https://devpost.com/software/noted-qnizx3) [[Slides]](/media/noted_slides.pdf)
 
 Allows people to organize class notes pics for their classes. Made for [#tamuhack2019](https://tamuhack.com)
 
 Won "best use of Google Cloud Plaform" award at Tamuhack 2019!
 
-<img src="banner.png" class="header-img"/>
+<img src="media/banner.png" class="header-img"/>
 
 ## Inspiration
 Often when I open my photo gallery on my phone, I am shocked to find how many pictures are just of powerpoints and homework assignments. In the moment those photos are deemed as necessary, but when you want to just find some memories they become a huge hinderence.
