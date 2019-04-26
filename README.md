@@ -5,6 +5,8 @@ Allows people to organize class notes pics for their classes. Made for [#tamuhac
 
 Won "best use of Google Cloud Plaform" award at Tamuhack 2019!
 
+Developers (see below for more info): George Thayamkery, Ansh Jain, Justin Lui, Annie Paul, and Piyush Mewada
+
 <img src="media/banner.png" class="header-img"/>
 
 ## Inspiration
